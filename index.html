@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2a1519">
+  <!-- Private gift: asks search engines not to list this page. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Twenty-Three Letters</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%236e1f2e'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23dcc486' stroke-width='2' opacity='.7'/%3E%3C/svg%3E">
+
+  <!-- Design (do not edit) -->
+  <link rel="stylesheet" href="do-not-touch/fonts.css">
+  <link rel="stylesheet" href="do-not-touch/style.css">
+
+  <!-- YOUR CONTENT (these two files are the ones you edit) -->
+  <script src="content/settings.js"></script>
+  <script src="content/letters.js"></script>
+
+  <!-- Behaviour (do not edit) -->
+  <script src="do-not-touch/app.js" defer></script>
+</head>
+
+<body>
+
+<!-- ============ Shared drawing parts (botanicals, ornaments, paper patterns) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Botanical sprig -->
+    <symbol id="sprig" viewBox="0 0 200 300">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M100 292 C95 222 122 150 90 62 C82 36 90 18 100 10" stroke="currentColor" stroke-width="2"/>
+        <path d="M105 202 C125 192 141 178 151 160" stroke="currentColor" stroke-width="1.6"/>
+      </g>
+      <g fill="currentColor" fill-opacity=".38" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round">
+        <path d="M99 252 C130 246 160 226 172 196 C140 196 108 216 99 252Z"/>
+        <path d="M101 216 C70 213 42 193 32 163 C64 164 94 184 101 216Z"/>
+        <path d="M108 176 C136 173 160 151 166 123 C138 125 114 143 108 176Z"/>
+        <path d="M104 136 C78 134 56 117 50 91 C76 93 98 109 104 136Z"/>
+        <path d="M96 101 C118 99 136 83 140 61 C118 63 100 77 96 101Z"/>
+        <path d="M91 71 C74 69 60 57 58 39 C74 41 88 53 91 71Z"/>
+      </g>
+      <g fill="#c79a9a" stroke="#a86f74" stroke-width="1">
+        <circle cx="100" cy="9" r="6"/>
+        <circle cx="151" cy="159" r="5"/>
+        <circle cx="140" cy="176" r="4"/>
+        <circle cx="160" cy="174" r="3.4"/>
+      </g>
+    </symbol>
+
+    <!-- Line ornament (divider) -->
+    <symbol id="flourish" viewBox="0 0 240 24">
+      <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+        <path d="M6 12 H88"/><path d="M152 12 H234"/>
+        <path d="M92 12 C97 5 105 5 108 10"/><path d="M148 12 C143 5 135 5 132 10"/>
+      </g>
+      <path d="M120 4.5 L127.5 12 L120 19.5 L112.5 12 Z" fill="currentColor"/>
+      <circle cx="104" cy="14.5" r="1.7" fill="currentColor"/><circle cx="136" cy="14.5" r="1.7" fill="currentColor"/>
+    </symbol>
+
+    <!-- Corner ornament -->
+    <symbol id="corner" viewBox="0 0 60 60">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 3 H38"/><path d="M3 3 V38"/>
+        <path d="M11 11 C27 10 33 19 28 27 C24 33 15 29 19 23"/>
+        <path d="M11 11 C10 27 19 33 27 28"/>
+      </g>
+      <circle cx="3" cy="3" r="2.2" fill="currentColor"/>
+    </symbol>
+
+    <!-- Rose (line drawing) -->
+    <symbol id="rose" viewBox="0 0 40 40">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 5 C31 5 36 14 34 22 C32 32 22 36 14 32 C5 28 5 16 13 10 C18 6 25 7 28 12 C31 18 27 25 21 24 C16 23 16 16 21 16"/>
+        <path d="M20 36 C19 40 17 42 14 43" stroke-width="1.2"/>
+      </g>
+    </symbol>
+
+    <!-- Heart (line drawing) -->
+    <symbol id="heart" viewBox="0 0 40 40">
+      <path d="M20 33 C8 24 5 17 8.5 12 C12 7.5 18 8.5 20 13 C22 8.5 28 7.5 31.5 12 C35 17 32 24 20 33Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Envelope-lining patterns (the secret inside of each envelope) -->
+    <pattern id="liner-burg" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#6e1f2e"/><path d="M3 .6 L5.4 3 L3 5.4 L.6 3Z" fill="none" stroke="#dcc486" stroke-opacity=".28" stroke-width=".35"/>
+    </pattern>
+    <pattern id="liner-olive" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#5f6440"/><circle cx="3" cy="3" r="1.1" fill="none" stroke="#e8dcb4" stroke-opacity=".3" stroke-width=".35"/>
+    </pattern>
+    <pattern id="liner-wine" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#4a1220"/><path d="M0 6 L6 0" stroke="#c79a9a" stroke-opacity=".28" stroke-width=".4"/><path d="M-1 1 L1 -1 M5 7 L7 5" stroke="#c79a9a" stroke-opacity=".28" stroke-width=".4"/>
+    </pattern>
+    <pattern id="liner-rose" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#b98585"/><path d="M3 1 L3 5 M1 3 L5 3" stroke="#fbf0e0" stroke-opacity=".35" stroke-width=".4"/>
+    </pattern>
+
+    <!-- Soft shading used on envelope flaps and pockets -->
+    <linearGradient id="g-flap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset=".55" stop-color="#7a5230" stop-opacity="0"/><stop offset="1" stop-color="#4a2c14" stop-opacity=".20"/>
+    </linearGradient>
+    <linearGradient id="g-side-l" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#4a2c14" stop-opacity=".16"/>
+    </linearGradient>
+    <linearGradient id="g-side-r" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset="1" stop-color="#4a2c14" stop-opacity=".20"/>
+    </linearGradient>
+    <linearGradient id="g-bottom" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#4a2c14" stop-opacity=".10"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<noscript>
+  <p style="font:20px Georgia,serif;padding:40px;text-align:center">This little collection of letters needs JavaScript to open. Please try another browser.</p>
+</noscript>
+
+<div id="page">
+
+  <!-- ===================================================================
+       OPENING SCREEN
+       (the words here are filled in from  content/settings.js)
+       =================================================================== -->
+  <header class="hero" id="top">
+    <svg class="sprig sprig--tl anim" style="--d:500;--rot:138deg" aria-hidden="true"><use href="#sprig"/></svg>
+    <svg class="sprig sprig--br anim" style="--d:700;--rot:-42deg" aria-hidden="true"><use href="#sprig"/></svg>
+    <svg class="sprig sprig--bl anim" style="--d:900;--rot:62deg" aria-hidden="true"><use href="#sprig"/></svg>
+
+    <div class="hero__inner">
+
+      <figure class="portrait anim" style="--d:0">
+        <div class="portrait__frame">
+          <img class="portrait__img" id="photo" alt="" decoding="async" fetchpriority="high">
+        </div>
+        <span class="portrait__seal anim" style="--d:1000" id="ageSeal"></span>
+      </figure>
+
+      <div class="hero__text">
+        <p class="eyebrow anim" style="--d:650" id="eyebrow"></p>
+        <h1 class="greeting anim" style="--d:850" id="greeting"></h1>
+        <p class="name anim" style="--d:1050" id="name"></p>
+        <svg class="rule anim" style="--d:1150" aria-hidden="true"><use href="#flourish"/></svg>
+        <p class="intro anim" style="--d:1250" id="intro"></p>
+
+        <a class="begin anim" style="--d:1500" href="#collection" id="begin">
+          <span class="begin__seal" id="beginSeal"></span>
+          <span class="begin__label" id="beginText"></span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       THE COLLECTION  (the 23 envelopes are created automatically
+       from content/letters.js — nothing to edit here)
+       =================================================================== -->
+  <main class="shelf" id="collection">
+    <div class="shelf__inner">
+      <div class="shelf__head">
+        <p class="shelf__label" id="collectionLabel"></p>
+        <h2 class="shelf__title" id="collectionTitle"></h2>
+        <svg class="rule rule--gold" aria-hidden="true"><use href="#flourish"/></svg>
+        <p class="shelf__intro" id="collectionIntro"></p>
+        <p class="shelf__progress" id="progress" aria-live="polite"></p>
+      </div>
+
+      <ol class="grid" id="grid"></ol>
+
+      <footer class="foot">
+        <svg class="foot__sprig" aria-hidden="true"><use href="#sprig"/></svg>
+        <p class="foot__finale" id="finale"></p>
+        <p class="foot__msg" id="footerMessage"></p>
+        <a class="foot__top" href="#top" id="backToTop"></a>
+      </footer>
+    </div>
+  </main>
+
+</div>
+
+<!-- ===================================================================
+     READING STAGE (where an opened letter appears)
+     =================================================================== -->
+<div class="stage" id="stage" aria-hidden="true">
+  <div class="stage__backdrop"></div>
+  <div class="stage__envhost" id="envHost"></div>
+
+  <div class="stage__layout" id="stageLayout">
+    <article class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+      <svg class="sheet__corner sheet__corner--tl" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="sheet__corner sheet__corner--tr" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="sheet__corner sheet__corner--bl" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="sheet__corner sheet__corner--br" aria-hidden="true"><use href="#corner"/></svg>
+
+      <div class="sheet__scroll" id="sheetScroll" tabindex="0">
+        <div class="sheet__content">
+          <p class="sheet__no" id="sheetNo"></p>
+          <h3 class="sheet__title" id="sheetTitle"></h3>
+          <svg class="rule rule--ink" aria-hidden="true"><use href="#flourish"/></svg>
+          <div class="sheet__body" id="sheetBody"></div>
+          <div class="sheet__sign">
+            <p class="sheet__signoff" id="sheetSignoff"></p>
+            <p class="sheet__signature" id="sheetSignature"></p>
+          </div>
+          <svg class="sheet__sprig" aria-hidden="true"><use href="#sprig"/></svg>
+        </div>
+      </div>
+      <div class="sheet__fade" aria-hidden="true"></div>
+    </article>
+
+    <button class="stage__close" id="closeBtn" type="button">
+      <span class="stage__closeseal" id="closeSeal"></span>
+      <span class="stage__closetext" id="closeText"></span>
+    </button>
+  </div>
+
+  <div class="stage__petals" id="petals" aria-hidden="true"></div>
+</div>
+
+</body>
+</html>
